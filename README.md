@@ -9,23 +9,60 @@
 ```
 pip install rwalocation
 ```
+## Features
+1. All locations
+2. Provinces
+3. Places in a province
+4. Districts
+5. Places in a district
+6. Places that contain the specified name.
 ## USAGE
+Import modules
+* >from rwalocation import location, province, district
+* >import rwalocation
 ```
 1.
->>> import rwalocation 
->>> rwalocation.province()
-Results
->>> [{'id': '84b17f22-c14e-4931-98b2-bdf0cfd90090', 'country_code': 'RWA', 'country_name': 'RWANDA', 'province_code': 5, 'province_name': 'EAST', 'district_code': 501, 'district_name': 'Rwamagana', 'sector_code': '050114', 'sector_name': 'Rubona', 'cell_code': 5011406, 'cell_name': 'Nawe', 'village_code': 501140603, 'village_name': 'Rudashya'}, ...]
+>>> location()
+>>> [{'id': '84b17f22-c14e-4931-98b2-bdf0cfd90090', 'country_code': 'RWA', 'country_name': 'RWANDA', ... ]
 
-2. 
->> from rwalocation import district
+2.
+>>> rwalocation.province()
+>>> [{'province_name': 'EAST', 'province_code': 5}, {'province_name': 'NORTH', 'province_code': 4}, ...]
+
+3. 
+>>> rwalocation.province('Kigali')
+>>> [{'id': '68028287-fe59-42ae-978e-5d24a37ada38', 'country_code': 'RWA', 'country_name': 'RWANDA', ...]
+
+4.
 >>> district()
-results
 >>> [{'district_name': 'Bugesera', 'district_code': 507, 'province_name': 'EAST'}, ...]
 
+5.
+>>> district('Kicukiro')
+>>> [{'id': '84b17f22-c14e-4931-98b2-bdf0cfd90090', 'country_code': 'RWA', 'country_name': 'RWANDA', ...]
+
+6.
+>>> location('Rubashya') :> All locations which contain name "Rubashya"
+>>> [{'id': '84b17f22-c14e-4931-98b2-bdf0cfd90090', 'country_code': 'RWA', 'country_name': 'RWANDA',... ]
 ```
+
 ## DATA Spec
 1. Province
+```
+{ 
+   'province_code':5,
+   'province_name':'EAST',
+}
+```
+2. District
+```
+{ 
+   'district_name':'Bugesera',
+   'district_code':507,
+   'province_name':'EAST'
+}
+```
+3. Location
 ```
 { 
    'id':'84b17f22-c14e-4931-98b2-bdf0cfd90090',
@@ -41,14 +78,6 @@ results
    'cell_name':'Nawe',
    'village_code':501140603,
    'village_name':'Rudashya'
-}
-```
-2. District
-```
-{ 
-   'district_name':'Bugesera',
-   'district_code':507,
-   'province_name':'EAST'
 }
 ```
 
